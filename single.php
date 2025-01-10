@@ -1,49 +1,50 @@
-<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package WordPress
+ * @subpackage Twenty_Twenty_One
+ * @since Twenty Twenty-One 1.0
+ */
 
-<!-- wp:group {"tagName":"main","align":"full"} -->
-<main class="wp-block-group alignfull">
-	<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50"},"margin":{"bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
-	<div class="wp-block-group"
-		style="margin-bottom:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--50)">
-		<!-- wp:post-featured-image {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->
+get_header();
 
-		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10","padding":{"top":"0","bottom":"0"}}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
-		<div class="wp-block-group" style="padding-top:0;padding-bottom:0">
-			<!-- wp:post-title {"level":1,"fontSize":"x-large"} /-->
+/* Start the Loop */
+while ( have_posts() ) :
+	the_post();
 
-			<!-- wp:template-part {"slug":"post-meta"} /-->
-		</div>
-		<!-- /wp:group -->
-	</div>
-	<!-- /wp:group -->
+	get_template_part( 'template-parts/content/content-single' );
 
-	<!-- wp:post-content {"lock":{"move":false,"remove":true},"align":"full","layout":{"type":"constrained"}} /-->
+	if ( is_attachment() ) {
+		// Parent post navigation.
+		the_post_navigation(
+			array(
+				/* translators: %s: Parent post link. */
+				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
+			)
+		);
+	}
 
-	<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"},"padding":{"bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-	<div class="wp-block-group"
-		style="margin-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--50)">
-		<!-- wp:post-terms {"term":"post_tag","separator":"  ","className":"is-style-pill"} /-->
+	// If comments are open or there is at least one comment, load up the comment template.
+	if ( comments_open() || get_comments_number() ) {
+		comments_template();
+	}
 
-		<!-- wp:group {"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group">
-			<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
-			<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer">
-			</div>
-			<!-- /wp:spacer -->
+	// Previous/next post navigation.
+	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
+	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
 
-			<!-- wp:separator {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"backgroundColor":"contrast-3","className":"is-style-wide"} -->
-			<hr class="wp-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--wp--preset--spacing--40)"/>
-			<!-- /wp:separator -->
+	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
+	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
 
-			<!-- wp:pattern {"slug":"twentytwentyfour/hidden-comments"} /-->
+	the_post_navigation(
+		array(
+			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
+			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
+		)
+	);
+endwhile; // End of the loop.
 
-			<!-- wp:pattern {"slug":"twentytwentyfour/hidden-post-navigation"} /-->
-
-		</div>
-		<!-- /wp:group -->
-	</div>
-	<!-- /wp:group -->
-</main>
-<!-- /wp:group -->
-
-<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->
+get_footer();
