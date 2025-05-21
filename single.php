@@ -1,50 +1,81 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
 
 get_header();
+the_post();
+?>
+    <div class="body">
+        <div class="conteneur">
+            <div class="information-photo">
+                <h2 class="titre-photo"> <?php echo the_title(); ?></h2>
+                <ul>
+                    <li>
+                        <p class="info">RÉFÉRENCE : <span id="reference"> <?php echo get_field('reference'); ?></span>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="info">CATÉGORIE : <?php echo get_the_terms(get_the_ID(), 'categorie')[0]->name; ?></p>
+                    </li>
+                    <li>
+                        <p class="info">FORMAT : <?php echo get_the_terms(get_the_ID(), 'format')[0]->name; ?></p>
+                    </li>
+                    <li>
+                        <p class="info">TYPE : <?php echo get_field('type'); ?></p>
+                    </li>
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
+            </div>
+            <div class='affichage-photo'>
+                <?php the_post_thumbnail("medium_large"); ?>
+            </div>
+            </ul>
+        </div>
+        <div class="contact_block conteneur">
+            <div class="texte-contact">
+                <p>Cette photo vous intéresse ?</p>
+                <button id="myBtn-photo" class="contact_button"
+                        data-photo-ref="<?php echo esc_attr(get_field('reference')); ?>">
+                        Contact
+                </button>
+            </div>
+        <div class="nav_photo">
+            <?php
+            $next_post = get_next_post();
+            $previous_post = get_previous_post();
 
-	get_template_part( 'template-parts/content/content-single' );
+            if ($next_post || $previous_post) {
+                echo '<div class="miniature-nav-container">';
+        
+                if ($previous_post) {
+                    echo '<div class="miniatureprev">';
+                    echo get_the_post_thumbnail($previous_post->ID, [100, 100]);
+                    echo '<div class="custom_arrow">&#10229;</div>';
+                    echo '</div>';
+                }
+        
+                if ($next_post) {
+                    echo '<div class="miniaturenext">';
+                    echo get_the_post_thumbnail($next_post->ID, [100, 100]);
+                    echo '<div class="custom_arrow">&#10230;</div>';
+                    echo '</div>';
+                }
+        
+                echo '</div>';
+            }
+            ?>
+        </div>
+    </div>
+    <!-- Modale - Single Photo -->
+    <div id="myModal-photo" class="modal-photo">
+        <!-- Contenu Modale -->
+        <div class="modal-content-photo">
+            <span class="close-photo">×</span>
+            <p class="photo-reference">Référence : <span id="modal-photo-ref"></span></p>
+            <img src="<?php echo esc_url(wp_get_attachment_url(34)); ?>" alt="Contact"/>
+            <!-- Formulaire -->
+            <?php echo do_shortcode('[contact-form-7 id="b8b1027" title="Formulaire de contact 2"]'); ?>
+        </div>
+    </div>
 
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
+</div>
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
 
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
-
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
-
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
-
-get_footer();
+<?php get_footer(); ?>

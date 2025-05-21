@@ -1,0 +1,841 @@
+/*
+Theme Name: Nathalie Mota
+Author: Yoan 
+Description: Thème pour Nathalie Mota - Photographe freelance
+Version: 1.0
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap%27');
+
+
+
+
+h1, h2, h3 {
+    font-weight: bold;
+    font-family: 'Space Mono';
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+
+.container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+}
+
+
+/* Style | Hero Image */
+
+.title-hero {
+    position: absolute;
+    top: 300px;
+    z-index: 2;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 96px;
+    line-height: 142px;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+.hero {
+    background-image: url('../assets/images/fallback-hero.png');
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position: relative;
+}
+
+.logo {
+    max-width: 300px;
+}
+
+/* Styles | Mobile - Hero Image */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 400px; /* Hauteur - Mobiles */
+    }
+}
+
+/* Insertion du Css du footer */
+.site-footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Space Mono';
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 0;
+}
+
+
+/* Zone principale de la photo */
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Grille des photos apparentées */
+.related-photos {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    
+}
+
+/*SINGLE PHOTO */
+
+  .titre-photo {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 58px;
+    width: 80%;
+    padding: 40px 0;
+    margin: 0;
+    font-size: 2rem;
+     margin-bottom: 1rem; 
+     align-content: center;
+    flex: 1;
+    position: relative;
+    max-width: 49%;
+    height: auto;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+  
+  .information-photo {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction:column; 
+  }
+
+  .affichage-photo{
+    margin-left: 20px;
+  }
+
+  .texte-contact {
+    display: flex;
+    margin-right: auto;
+  gap: 10px;
+  }
+  
+  .contact_button {
+    font-family: 'Space Mono', Sans-serif;
+  background-color: #d8d8d8;
+  font-size: 12px;
+  border: none;
+  border-radius: 2px;
+  text-align: center;
+  color: #000000;
+  font-weight: 400;
+  line-height: 17.77px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 10px 20px;
+  }
+  
+  .contact_block {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1126px;
+  margin: 0 auto;
+  border-bottom: 2px solid #000;
+  }
+
+
+  
+ .conteneur_photo_rec{
+    display: flex;
+    justify-content: space-between;
+ }
+ .conteneur {
+    display: flex;
+    align-items: center; /* centre verticalement */
+    justify-content: center; /* optionnel, pour centrer horizontalement */
+    gap: 2rem; /* espace entre le texte et l'image */
+    border-bottom: 2px solid #000;
+ }
+
+ .nav_photo{
+  text-align: center;
+  width: auto;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+ }
+
+ .miniature-nav-container {
+  display: flex;
+  gap: 10px;
+}
+
+.miniatureprev, .miniaturenext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom_arrow{
+  font-size: 18px;
+  margin: top 5px;
+}
+ .title_reco{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26.66px;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding-left: 20px;
+ }
+
+  /* /*Filtres */
+  .filters-and-sort {
+    max-width: 1126px;  /* Largeur maximale - Section Filtres */
+    margin: 0 auto;  
+    text-align: center;  
+    padding-top: 40px; 
+    display: flex; 
+    justify-content: start;
+}
+
+.filters-and-sort label, .filters-and-sort select {
+    font-family: Poppins;  
+    font-size: 12px;  
+    font-weight: 500;  
+    line-height: 18px;  
+    letter-spacing: 0.03em;  
+    text-align: left;  
+    text-transform: uppercase;  
+}
+
+#category-filter{
+    margin-right: 42px;
+}
+
+#date-sort{
+    margin-left: 310px;
+}
+
+#category-filter,
+#format-filter,
+#date-sort{
+    width: 260px;  /* Largeur Filtres */
+    height: 42px;  /* Hauteur Filtres */
+    padding: 11px 18px 11px 18px;  /* Marge intérieure Filtres */
+    margin-bottom: 20px; 
+    border-radius: 8px;  /* Coins Filtres */
+    border: 1.3px solid #B8BBC2;  /* Bordure solide */
+    justify-content: space-between;
+}
+
+
+
+/* Media query - Filtres */
+@media (max-width: 768px) {
+    .filters-and-sort {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20px; 
+    }
+
+    #category-filter,
+    #format-filter,
+    #date-sort{
+        margin-bottom: 0; 
+}
+
+    #category-filter,
+    #date-sort{
+        margin: 10px 0;
+    }
+
+}
+/* Styles for screens smaller than 768px*/
+@media (max-width: 768px) {
+    /* Supprime la disposition flex et ajuste la largeur des vignettes CPT individuelles. */
+    .thumbnail-container-accueil {
+        display: block;  /* Change la disposition en bloc pour les éléments enfants */
+    }
+    .custom-post-thumbnail {
+        flex-basis: 100%;  /* Largeur totale pour la disposition en colonne unique */
+    }
+    .custom-post-thumbnail {
+        margin-bottom: 10px;  /* Vous devrez peut-être ajuster les marges pour l'espacement */
+    }
+}
+  
+/* PHOTO BLOCK - BOUTON CHARGER PLUS - FILTRES */
+/* Styles | Section CPT Thumbnails */
+.custom-post-thumbnails {
+    max-width: 1126px;  /* Largeur maximale de la section */
+    margin: 0 auto;  /* Centre contenu horizontalement */
+    text-align: center; 
+    /*padding: 20px;*/
+}
+
+/* Styles | Container CPT Thumbnails */
+.thumbnail-container-accueil {
+    display: flex;  /* Flexbox pour les éléments enfants */
+    flex-wrap: wrap;  /* Passer à la ligne lorsque l'espace est insuffisant */
+    justify-content: space-between;  /* Espace entre les éléments de manière égale */
+    margin-top: 20px;  
+}
+
+/* Styles | Individual CPT Thumbnail */
+.custom-post-thumbnail {
+    flex-basis: calc(50% - 10px); /* Deux colonnes - Espace de 10px */  
+    margin-bottom: 20px; 
+}
+
+/* Styles | Thumbnail Image Wrapper */
+.thumbnail-wrapper {
+    position: relative;  /* Établit un contexte de positionnement pour les éléments enfants */
+    overflow: hidden;  /* Cache le contenu débordant de la zone définie */
+    padding-bottom: 100%; 
+}
+
+/* Styles | Thumbnail Image */
+.thumbnail-wrapper img {
+    position: absolute; 
+    top: 0;  /* Aligne l'image en haut */
+    left: 0;  /* Aligne l'image à gauche */
+    width: 100%; 
+    height: 100%;  
+    object-fit: cover;  /* Couvrir tout l'espace sans déformation */
+}
+
+/* Styles | Overlay and Icons */
+.thumbnail-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.6); 
+    opacity: 0;  
+    display: flex;  
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;  
+    transition: opacity 0.3s;  /* Transition d'opacité avec une durée */
+}
+
+.thumbnail-wrapper:hover .thumbnail-overlay {
+    opacity: 1;  /* Survolé, l'overlay devient opaque */
+}
+
+.thumbnail-overlay img {
+    width: 46px; 
+    height: 32px;  
+    position: absolute;  
+    top: 50%; 
+    left: 50%;  
+    transform: translate(-50%, -50%);  /* Centre l'image */
+}
+
+.fullscreen-icon {
+  color: white;  
+  position: absolute;  
+  top: 10px;  
+  right: 10px;
+}
+
+/* Styles | Voir toutes - Button Container */
+.view-all-button {
+    display: flex;  
+    justify-content: center;  /* Centre horizontalement */
+    align-items: center;  /* Centre verticalement */
+    margin-top: 20px; 
+}
+
+
+/* Effet au survol */
+.thumbnail-overlay:hover .eye-icon {
+    background: lightgray;
+}
+
+.thumbnail-overlay:hover .eye-icon::before {
+    transform: none;
+}
+
+
+/* Styles | Bouton de la page d'accueil */
+#load-more-posts {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;  
+    width: 272px;  /* Largeur du bouton */
+    height: 50px;  /* Hauteur du bouton */
+    background-color: #D8D8D8;
+    color: #000000;  
+    text-decoration: none;  /* Supprime Décoration de texte */
+    border-radius: 2px;  
+    font-weight: bold;  
+    transition: .3s ease-in-out;  /* Transition de 0.3s - accélération/décélération */
+    cursor: pointer;  /* Curseur au survol */
+    font-family: Space Mono;  
+    font-size: 12px;  
+    font-weight: 400;  
+    line-height: 17.77px;  
+    letter-spacing: 0em;  
+    text-align: center;  
+    border: none;  /* Bordure du bouton */
+    margin-top: 20px;  
+}
+
+#load-more-posts:hover {
+    color: #ffffff;  /* Couleur du texte en survol */
+    background-color: #000000;  /* Couleur d'arrière-plan - Survol */
+}
+
+
+.photo-block:hover .photo-info {
+    opacity: 1;
+  }
+
+    .info-photo {
+        flex: 1; /* prend 50% ou ajuste automatiquement */
+    }
+      
+.photo-info{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+.photo-info-left,
+.photo-info-right {
+    opacity: 1; /* ou 0 si tu veux une animation au survol */
+    margin: 0;
+}
+
+.photo-info-left p,
+.photo-info-right p {
+    margin: 0;
+}
+
+
+/* Insertion du Css de la modale de contact */
+.modale-background {
+    width: 120%;
+    height: 106px;
+    left: -10%;
+    position: relative;
+    margin-top: 18px;
+    margin-bottom: 45px;
+}
+.modale-hidden {
+    display: none;
+  }
+  
+  .modale-anim-out {
+    animation: fadeOut 0.3s both ease-in-out;
+  }
+  
+  .modale-box-anim-out {
+    animation: slideToBottom 0.5s both ease-in-out;
+  }
+  .modale-content .modale-box-anim-in {
+    animation: slideFromTop 0.5s both ease-in-out;
+  }
+  .modale-content {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s both ease-in-out;
+    width: 100%;
+    height: 100%;
+  }
+  .modale-content .modale-box {
+    width: 597px;
+    background-color: white;
+  }
+  .modale-content .modale-box .modale-border {
+    border: 4px solid black;
+    overflow: hidden;
+  }
+  .modale-content .modale-box .modale-border .modale-background {
+    width: 120%;
+    height: 106px;
+    left: -10%;
+    position: relative;
+    margin-top: 18px;
+    margin-bottom: 45px;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 {
+    margin: 0% 28% 7.5% 28%;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p {
+    margin-block-start: 24px;
+    margin-block-end: 24px;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p .modale-submit {
+    margin-top: 13px;
+    letter-spacing: 0.1em;
+    width: 100%;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p label {
+    font-family: 'Poppins', sans-serif;
+    color: var(--black);
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p input,
+  .modale-content .modale-box .modale-border .wpcf7 p textarea {
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #b8bbc2;
+    margin-top: 5px;
+    border-radius: 8px;
+    padding: 0;
+    padding-left: 10px;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p input {
+    height: 40px;
+  }
+  .modale-content .modale-box .modale-border .wpcf7 p textarea {
+    height: 142px;
+  }
+
+  /*Modale*/
+  /* Styles | Bouton myBtn-photo */
+#myBtn-photo {
+    font-family: 'Space Mono', Sans-serif;
+    background-color: #d8d8d8;
+    font-size: 12px;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    color: #000000;
+    font-weight: 400;
+    line-height: 17.77px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#myBtn-photo:hover {
+    background-color: #cccaca;
+}
+
+/* Styles | Modale photo */
+.modal-photo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.822);
+    overflow: auto;
+}
+
+/* Styles | Contenu de la modale photo */
+.modal-content-photo {
+  background-image: url('./assets/images/contact.png');
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.8s;
+    animation-name: animatetop;
+    animation-duration: 0.8s;
+    animation-timing-function: ease;
+}
+
+/* Styles | Bouton de fermeture de la modale photo */
+.close-photo {
+    font-family: "Space Mono", monospace;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-photo:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close-photo:hover {
+    text-decoration: underline;
+}
+
+/* Styles | Modale en version mobile */
+@media (max-width: 768px) {
+    .modal-content-photo {
+        max-width: 95%;
+        /*overflow-y: auto !important;*/
+        /*max-height: 71vh !important;*/
+    }
+  }
+  /* Styles | MOBILE - MODALE */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        overflow-y: auto; /* Vertical scrolling */
+        max-height: 67vh; /* Contenu visible */
+    }
+}
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container.opened {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    color: white;
+}
+
+.middle-image {
+    max-width: 100%;
+    max-height: 70vh;
+}
+
+.btn-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.right-container img {
+    cursor: pointer;
+  }
+
+
+
+.photo:hover {
+  filter: brightness(0.7); /* Assombrit l'image en réduisant la luminosité à 70% */
+}
+
+
+
+.modal-container {
+  display: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container.opened {
+  opacity: 1;
+  display: flex !important;
+}
+
+.modal-container img {
+  max-height: 80vh;
+}
+
+.left-arrow,
+.right-arrow {
+  width: auto;
+  display: flex; /* Flèches - centrage vertical */
+  align-items: center;
+}
+
+.left-arrow .arrow-link,
+.right-arrow .arrow-link {
+  display: flex; /* Contenu horizontalement */
+  align-items: center; /* Centrer verticalement */
+  text-decoration: none;
+  color: white;
+  outline: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 20px;
+}
+
+.left-arrow > a > span:hover,
+.right-arrow > a > span:hover {
+  font-weight: 700;
+}
+
+
+.left-arrow .arrow-img-gauche {
+  filter: invert(100%); /* Inverser couleurs de l'image*/
+  margin-right: 10px;
+}
+
+.left-arrow .text {
+  order: 1; /* Placer le texte à droite de la flèche */
+}
+
+.right-arrow .arrow-img-droite {
+  filter: invert(100%); /* Inverser couleurs de l'image*/
+  margin-left: 10px;
+  order: 2; /* Placer la flèche à la fin, du côté droit */
+}
+
+
+.info-photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info-photo > span {
+  padding: 20px;
+  color: white;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase !important;
+}
+
+
+/* Appliquer des styles spécifiques aux appareils mobiles dans une requête media */
+@media (max-width: 768px) {
+    .btn-close {
+      font-size: 18px;
+      padding: 20px;
+      right: 20px;
+      top: 10px;
+    }
+  
+    .modal-container {
+      padding: 1px;
+      z-index: 1000; /* Ajuster selon les besoins */
+      background: rgba(0, 0, 0, 0.8); /* Légèrement plus transparent */
+    }
+  
+    .modal-container img {
+      max-height: 60vh; /* Ajuster selon les besoins */
+      width: auto; /* Maintenir le rapport d'aspect */
+    }  
+
+    .left-arrow > a > span,
+    .right-arrow > a > span {
+        display: none;
+    }
+
+    .left-arrow {
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      position: absolute;
+      top: 44%;
+      left: -12px; /* Positionner la flèche de gauche à gauche */
+      transform: translateY(-50%); /* Centrer verticalement la flèche */
+    }
+  
+    .right-arrow {
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      position: absolute;
+      top: 44%;
+      right: 28px; /* Positionner la flèche de droite à droite */
+      transform: translateY(-50%); /* Centrer verticalement la flèche */
+    }
+  
+    .info-photo {
+      display: flex;
+      flex-direction: column; /* Empiler les éléments verticalement sur mobile */
+      align-items: center; /* Centrer les éléments horizontalement */
+    }
+  
+    .info-photo > span {
+      padding: 10px;
+      font-size: 14px;
+    }
+}
+
