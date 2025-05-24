@@ -74,6 +74,55 @@ the_post();
             <?php echo do_shortcode('[contact-form-7 id="b8b1027" title="Formulaire de contact 2"]'); ?>
         </div>
     </div>
+    <!-- Section Photos Apparentées -->
+    <div class="related-images">
+        <h3>VOUS AIMEREZ AUSSI</h3>
+        <div class="image-container">
+            <?php
+            // Récupère les slugs de la catégorie du post actuel
+            $current_categories = get_the_terms(get_the_ID(), 'categorie');
+            $current_category_slugs = array();
+
+            if ($current_categories && !is_wp_error($current_categories)) {
+                foreach ($current_categories as $cat) {
+                    $current_category_slugs[] = $cat->slug;
+                }
+            }
+
+            // Requête pour 2 photos aléatoires de la même catégorie
+            $args_related_photos = array(
+                'post_type' => 'photos',
+                'posts_per_page' => 2,
+                'orderby' => 'rand',
+                'post__not_in' => array(get_the_ID()), // exclut le post actuel
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'slug',
+                        'terms' => $current_category_slugs,
+                    ),
+                ),
+            );
+
+            $related_photos_query = new WP_Query($args_related_photos);
+
+            while ($related_photos_query->have_posts()) :
+                $related_photos_query->the_post();
+            ?>
+                <div class="related-image">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('custom-square'); ?>
+                    </a>
+                </div>
+                <!-- Ajouter un bouton pour la page d'accueil -->
+                <div class="home-button">
+                    <a href="<?php echo home_url(); ?>" class="button">Toutes les photos</a>
+                </div>
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+        </div>
+    </div>
+
 
 </div>
 

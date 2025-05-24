@@ -75,103 +75,38 @@ if( jQuery('#myBtn-photo').length ){
           photoModal.style.display = "none";
       }
   }
+  // MENU BURGER MOBILE
+// Gérer le clic sur le bouton d'ouverture du menu
+$('#open-fullscreen-menu-button').click(function(e) {
+    e.stopPropagation(); // Empêche la propagation de l'événement pour éviter la fermeture
+    $('header').toggleClass('mobile-menu-opened');
+    console.log('BOUTON CLIQUÉ!');
+});
+
+// FERMER MENU - CLIQUER SUR LE BOUTON DE FERMETURE
+// Gérer le clic sur le bouton de fermeture du menu
+$('#close-fullscreen-menu-button').click(function() {
+    $('header').removeClass('mobile-menu-opened');
+    console.log('MENU FERMÉ!');
+});
+
+// Fermer le menu lors d'un clic en dehors de celui-ci
+$(document).click(function(event) {
+    if (!$('header').has(event.target).length && !$('header').is(event.target)) {
+        $('header').removeClass('mobile-menu-opened');
+        // console.log('MENU FERMÉ!');
+    }
+});
+
 
   // MISE À JOUR DU CHAMP #REF-PHOTO DANS LE FORMULAIRE DE CONTACT 7
   jQuery(document).ready(function($) {
       $("#myBtn-photo").on('click', function() {
           // Définissez la valeur de #ref-photo lorsque le bouton est cliqué.
-          $("#ref-photo").val(acfReferencePhoto);
+          $("#ref-photo").val($(this).data('photo-ref'));
       });
   });
   
 }
-
-
-/*
- if (boutonContact) {
-         
-        boutonContact.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('test');
-        });
-       
-    }
-document.addEventListener('DOMContentLoaded', function () {
-    const boutonContact = document.getElementsByClassName ('contact-btn');
-    if (!boutonContact) {
-        console.error('❌ Le bouton contact n\'existe pas dans le DOM !');
-    } else {
-        for (var i = 0; i < boutonContact.length; i++) {
-            boutonContact[i].addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('test');
-            });
-        }
-    }
-        fin 
-    const modal = document.getElementById('contact-modal');
-    const closeModal = document.getElementById('close-modal');
-
-    document.getElementById('open-modal').addEventListener('click', function () {
-        modal.style.display = 'block';
-    });
-
-    closeModal.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function (e) {
-        if (e.target == modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    $("#contact-btn").on("click", function () {
-        let photoTitle = $(this).data("photo");
-        $("#contact-modal input[name='ref-photo']").val(photoTitle);
-        $("#contact-modal").fadeIn();
-    });
-
-    $(".icon-fullscreen").on("click", function (e) {
-        e.preventDefault();
-        let imgUrl = $(this).closest(".photo-item").find("img").attr("src");
-        $("#lightbox img").attr("src", imgUrl);
-        $("#lightbox").fadeIn();
-    });
-
-    $("#load-more").on("click", function (e) {
-        e.preventDefault();
-        let button = $(this);
-        let page = button.data("page");
-        let maxPage = button.data("max");
-
-     $.ajax({
-        url: ajax_url.ajaxurl,
-        type: "post",
-        data: {
-        action: "load_more_photos",
-        page: page
-        },
-        success: function (response) {
-         $(".photo-grid").append(response);
-        button.data("page", page + 1);
-        if (page + 1 > maxPage) {
-             button.hide();
-            }
-            }
-        });
-    });
-    document.addEventListener("DOMContentLoaded", function () {
-        let boutonContact = document.querySelector('.contact_btn a');
-    
-        if (boutonContact) {
-            boutonContact.addEventListener("click", function (e) {
-                e.preventDefault();
-                console.log('✅ Bouton contact cliqué !');
-            });
-        } else {
-            console.log('❌ Bouton contact non trouvé dans le DOM !');
-        }
-    }); */   
 
 

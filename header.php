@@ -14,6 +14,13 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>">
             </a>
         </div>
+        <!-- Bouton | Menu Mobile -->
+        <div class="mobile-menu-button" id="open-fullscreen-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <button id="close-fullscreen-menu-button" class="close-button">X</button>
         <nav class="main-nav">
             <?php 
                 wp_nav_menu(array(

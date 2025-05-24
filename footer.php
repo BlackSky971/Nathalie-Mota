@@ -1,4 +1,3 @@
-<footer>
 <?php get_template_part('templates_part/contact-modal'); ?>
 <footer class="site-footer">
     <hr>
