@@ -44,13 +44,16 @@
             if (!$('.right-arrow > a > span').length) {
                 $('.right-arrow > a').append('<span>Suivante</span>');
             }
+            console.log($("#prev-arrow-link").length); // doit afficher 1
+            console.log($("#next-arrow-link").length); // doit afficher 1
+
         });
     
         // Gestion de la fermeture de la boîte modale lorsque l'on clique sur le bouton de fermeture
         $('.btn-close').click(function(e){
             $('.modal-container').removeClass('opened');
         });
-    
+         
         // Si 'modal=1' est présent dans l'URL, simule un clic sur l'image pour ouvrir la modale automatiquement
         const queryString = window.location.search;
         const searchParams = new URLSearchParams(queryString);

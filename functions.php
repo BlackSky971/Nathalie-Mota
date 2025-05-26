@@ -41,7 +41,8 @@ function enqueue_infinite_pagination_js() {
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_infinite_pagination_js');
-add_image_size('custom-square', 300, 300, true);
+add_image_size('custom-square', 500, 500, true);
+
 
 // AJAX : charger plus de photos
 function load_more_posts() {

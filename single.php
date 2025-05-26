@@ -69,7 +69,6 @@ the_post();
         <div class="modal-content-photo">
             <span class="close-photo">×</span>
             <p class="photo-reference">Référence : <span id="modal-photo-ref"></span></p>
-            <img src="<?php echo esc_url(wp_get_attachment_url(34)); ?>" alt="Contact"/>
             <!-- Formulaire -->
             <?php echo do_shortcode('[contact-form-7 id="b8b1027" title="Formulaire de contact 2"]'); ?>
         </div>
@@ -106,18 +105,26 @@ the_post();
 
             $related_photos_query = new WP_Query($args_related_photos);
 
+            $i = 0;
             while ($related_photos_query->have_posts()) :
                 $related_photos_query->the_post();
+
+                $class='right';
+                if ($i === 1) {
+                    $class = 'left';
+                }
             ?>
-                <div class="related-image">
+                <div class="related-image <?php echo $class; ?>">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_post_thumbnail('custom-square'); ?>
                     </a>
+                    <!-- Ajouter un bouton pour la page d'accueil -->
+                    <div class="home-button">
+                        <a href="<?php echo home_url(); ?>" class="button">Toutes les photos</a>
+                    </div>
                 </div>
-                <!-- Ajouter un bouton pour la page d'accueil -->
-                <div class="home-button">
-                    <a href="<?php echo home_url(); ?>" class="button">Toutes les photos</a>
-                </div>
+
+            <?php $i++; ?>
             <?php endwhile;
             wp_reset_postdata(); ?>
         </div>

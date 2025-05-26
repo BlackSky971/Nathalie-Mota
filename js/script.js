@@ -1,3 +1,22 @@
+jQuery(document).ready(function($) {
+    $('#open-fullscreen-menu-button').click(function(e) {
+      e.stopPropagation();
+      $('header').addClass('mobile-menu-opened');
+      console.log('BOUTON CLIQUÉ!');
+    });
+  
+    $('#close-fullscreen-menu-button').click(function() {
+      $('header').removeClass('mobile-menu-opened');
+      console.log('MENU FERMÉ!');
+    });
+  
+    $(document).click(function(event) {
+      if (!$('header').has(event.target).length && !$('header').is(event.target)) {
+        $('header').removeClass('mobile-menu-opened');
+      }
+    });
+  });
+  
 document.addEventListener("DOMContentLoaded", function () {
     const modaleContent = document.querySelector("#contact-modal");
     const modaleBox = document.querySelector(".modale-box");
@@ -15,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
+
   
     function closeModale() {
       if (!modaleBox || !modaleContent) return;
@@ -75,28 +95,6 @@ if( jQuery('#myBtn-photo').length ){
           photoModal.style.display = "none";
       }
   }
-  // MENU BURGER MOBILE
-// Gérer le clic sur le bouton d'ouverture du menu
-$('#open-fullscreen-menu-button').click(function(e) {
-    e.stopPropagation(); // Empêche la propagation de l'événement pour éviter la fermeture
-    $('header').toggleClass('mobile-menu-opened');
-    console.log('BOUTON CLIQUÉ!');
-});
-
-// FERMER MENU - CLIQUER SUR LE BOUTON DE FERMETURE
-// Gérer le clic sur le bouton de fermeture du menu
-$('#close-fullscreen-menu-button').click(function() {
-    $('header').removeClass('mobile-menu-opened');
-    console.log('MENU FERMÉ!');
-});
-
-// Fermer le menu lors d'un clic en dehors de celui-ci
-$(document).click(function(event) {
-    if (!$('header').has(event.target).length && !$('header').is(event.target)) {
-        $('header').removeClass('mobile-menu-opened');
-        // console.log('MENU FERMÉ!');
-    }
-});
 
 
   // MISE À JOUR DU CHAMP #REF-PHOTO DANS LE FORMULAIRE DE CONTACT 7

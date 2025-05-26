@@ -26,7 +26,11 @@
                             <!-- Section | Overlay Catalogue -->
                             <div class="thumbnail-overlay">
                             <img class="eye" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt = "Icône de l'oeil">
-                            <img class="fullscreen-icon" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_fullscreen.png" alt = "Icône plein écran">
+                            <img class="fullscreen-icon"
+                            src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_fullscreen.png"
+                            alt="Icône plein écran"
+                            data-prev-link="<?php echo get_permalink(get_previous_post()); ?>"
+                            data-next-link="<?php echo get_permalink(get_next_post()); ?>">
                                 <?php
                                 // Récupère la référence et la catégorie de l'image associée.
                                 $related_reference_photos = get_field('reference');   // Récupère la référence de la photo
