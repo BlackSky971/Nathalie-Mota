@@ -73,65 +73,65 @@ the_post();
             <?php echo do_shortcode('[contact-form-7 id="b8b1027" title="Formulaire de contact 2"]'); ?>
         </div>
     </div>
-    <!-- Section Photos Apparentées -->
-    <div class="related-images">
-        <h3>VOUS AIMEREZ AUSSI</h3>
-        <div class="image-container">
-            <?php
-            // Récupère les slugs de la catégorie du post actuel
-            $current_categories = get_the_terms(get_the_ID(), 'categorie');
-            $current_category_slugs = array();
+  <!-- Section Photos Apparentées -->
+<div class="related-images">
+    <h3>VOUS AIMEREZ AUSSI</h3>
+    <div class="image-container">
+        <?php
+        // Récupère les slugs de la catégorie du post actuel
+        $current_categories = get_the_terms(get_the_ID(), 'categorie');
+        $current_category_slugs = array();
 
-            if ($current_categories && !is_wp_error($current_categories)) {
-                foreach ($current_categories as $cat) {
-                    $current_category_slugs[] = $cat->slug;
-                }
+        if ($current_categories && !is_wp_error($current_categories)) {
+            foreach ($current_categories as $cat) {
+                $current_category_slugs[] = $cat->slug;
             }
+        }
 
-            // Requête pour 2 photos aléatoires de la même catégorie
-            $args_related_photos = array(
-                'post_type' => 'photos',
-                'posts_per_page' => 2,
-                'orderby' => 'rand',
-                'post__not_in' => array(get_the_ID()), // exclut le post actuel
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categorie',
-                        'field' => 'slug',
-                        'terms' => $current_category_slugs,
-                    ),
+        // Requête pour 2 photos aléatoires de la même catégorie
+        $args_related_photos = array(
+            'post_type' => 'photos',
+            'posts_per_page' => 2,
+            'orderby' => 'rand',
+            'post__not_in' => array(get_the_ID()), // Exclut le post actuel
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'categorie',
+                    'field' => 'slug',
+                    'terms' => $current_category_slugs,
                 ),
-            );
+            ),
+        );
 
-            $related_photos_query = new WP_Query($args_related_photos);
+        $related_photos_query = new WP_Query($args_related_photos);
 
-            $i = 0;
-            while ($related_photos_query->have_posts()) :
-                $related_photos_query->the_post();
+        $i = 0;
+        while ($related_photos_query->have_posts()) :
+            $related_photos_query->the_post();
 
-                $class='right';
-                if ($i === 1) {
-                    $class = 'left';
-                }
-            ?>
-                <div class="related-image <?php echo $class; ?>">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('custom-square'); ?>
-                    </a>
-                    <!-- Ajouter un bouton pour la page d'accueil -->
-                    <div class="home-button">
-                        <a href="<?php echo home_url(); ?>" class="button">Toutes les photos</a>
-                    </div>
+            $class = ($i === 1) ? 'left' : 'right';
+        ?>
+            <div class="related-image <?php echo $class; ?>">
+                <a href="<?php the_permalink(); ?>">
+                    <?php the_post_thumbnail('custom-square'); ?>
+                </a>
+                <!-- Overlay sur chaque image -->
+                <div class="thumbnail-overlay-single">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon_eye.png" alt="Icône de l'œil">
+                    <i class="fas fa-expand-arrows-alt fullscreen-icon"></i>
                 </div>
-
-            <?php $i++; ?>
-            <?php endwhile;
-            wp_reset_postdata(); ?>
-        </div>
+            </div>
+        <?php
+            $i++;
+        endwhile;
+        wp_reset_postdata();
+        ?>
     </div>
 
-
+    <!-- Bouton global, en dehors de la boucle -->
+    <div class="home-button">
+        <a href="<?php echo home_url(); ?>" class="button">Toutes les photos</a>
+    </div>
 </div>
-
 
 <?php get_footer(); ?>
